@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111329">
+  <meta name="description" content="A dreamy cherry-blossom scientific calculator by Prasuna.">
+  <title>Sakura Doraemon | Scientific Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <div class="photo-backdrop" aria-hidden="true"></div>
+  <div class="night-sky" aria-hidden="true"></div>
+  <div class="garden" aria-hidden="true">
+    <div class="moon"></div>
+    <div class="tree tree-left"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="tree tree-right"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="hill hill-back"></div>
+    <div class="hill hill-front"></div>
+  </div>
+  <div class="petal-layer" aria-hidden="true"></div>
+
+  <div class="loading-screen" id="loadingScreen" aria-label="Loading calculator">
+    <div class="loading-flower">✿</div>
+    <p>Opening your little universe...</p>
+    <div class="loading-track"><span></span></div>
+  </div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sakura Doraemon calculator home">
+        <span class="brand-mark" aria-hidden="true">✿</span>
+        <span class="brand-copy"><strong>SAKURA</strong><small>little wonder lab</small></span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-button" id="soundToggle" type="button" aria-label="Turn button sounds off" title="Toggle button sounds">♫</button>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to light appearance" title="Toggle appearance">☼</button>
+        <button class="history-toggle" id="historyToggle" type="button" aria-expanded="false" aria-controls="historyPanel">
+          <span aria-hidden="true">↺</span> History
+        </button>
+      </div>
+    </header>
+
+    <section class="welcome" aria-label="Welcome">
+      <div class="welcome-copy">
+        <p class="eyebrow"><span class="eyebrow-star">✧</span> YOUR COZY CORNER OF THE COSMOS</p>
+        <h1>Welcome to <span>Prasuna's</span><br class="desktop-break"> Calculation World!</h1>
+        <p class="welcome-note">A little math, a little magic, and a whole lot of sakura. <span>♡</span></p>
+      </div>
+      <div class="welcome-charms" aria-hidden="true">
+        <span class="charm charm-bell">♟</span><span class="charm charm-star">✦</span><span class="charm charm-heart">♡</span>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="calculator-card" aria-label="Scientific calculator">
+        <div class="card-topline">
+          <span class="live-dot"></span><span>YOUR LITTLE CALCULATOR</span>
+          <span class="topline-flower" aria-hidden="true">✿</span>
+        </div>
+        <div class="display" id="display" aria-live="polite">
+          <div class="expression" id="expression" aria-label="Expression">0</div>
+          <div class="result-row">
+            <span class="result-equals">=</span>
+            <output class="result" id="result" aria-label="Result">0</output>
+          </div>
+          <div class="display-foot">
+            <span class="angle-mode" id="angleMode">DEG</span>
+            <span class="display-hint" id="displayHint">Ready when you are <span aria-hidden="true">✧</span></span>
+          </div>
+        </div>
+
+        <div class="keypad">
+          <section class="number-pad" aria-label="Number keys">
+            <button class="key utility" data-action="clear" type="button">AC</button>
+            <button class="key utility" data-action="delete" type="button" aria-label="Delete last character">DEL</button>
+            <button class="key utility" data-insert="(" type="button">(</button>
+            <button class="key utility" data-insert=")" type="button">)</button>
+            <button class="key number" data-insert="7" type="button">7</button>
+            <button class="key number" data-insert="8" type="button">8</button>
+            <button class="key number" data-insert="9" type="button">9</button>
+            <button class="key operator" data-insert="÷" type="button">÷</button>
+            <button class="key number" data-insert="4" type="button">4</button>
+            <button class="key number" data-insert="5" type="button">5</button>
+            <button class="key number" data-insert="6" type="button">6</button>
+            <button class="key operator" data-insert="×" type="button">×</button>
+            <button class="key number" data-insert="1" type="button">1</button>
+            <button class="key number" data-insert="2" type="button">2</button>
+            <button class="key number" data-insert="3" type="button">3</button>
+            <button class="key operator" data-insert="-" type="button">−</button>
+            <button class="key utility" data-action="sign" type="button" aria-label="Change sign">±</button>
+            <button class="key number" data-insert="0" type="button">0</button>
+            <button class="key number" data-insert="." type="button">.</button>
+            <button class="key operator" data-insert="+" type="button">+</button>
+            <button class="key number double-zero" data-insert="00" type="button">00</button>
+            <button class="key number" data-insert="%" type="button">%</button>
+            <button class="key number" data-insert="!" type="button">!</button>
+            <button class="key equals" data-action="equals" type="button" aria-label="Calculate">=</button>
+          </section>
+
+          <section class="science-pad" aria-label="Scientific functions">
+            <div class="science-heading"><span>THE FUN STUFF</span><span aria-hidden="true">✧</span></div>
+            <div class="science-grid">
+              <button class="key science" data-function="sin" type="button">sin</button>
+              <button class="key science" data-function="cos" type="button">cos</button>
+              <button class="key science" data-function="tan" type="button">tan</button>
+              <button class="key science" data-function="asin" type="button">sin<sup>−1</sup></button>
+              <button class="key science" data-function="acos" type="button">cos<sup>−1</sup></button>
+              <button class="key science" data-function="atan" type="button">tan<sup>−1</sup></button>
+              <button class="key science" data-function="log" type="button">log</button>
+              <button class="key science" data-function="ln" type="button">ln</button>
+              <button class="key science" data-function="sqrt" type="button">√</button>
+              <button class="key science" data-insert="^2" type="button">x<sup>2</sup></button>
+              <button class="key science" data-insert="^3" type="button">x<sup>3</sup></button>
+              <button class="key science" data-insert="^" type="button">x<sup>y</sup></button>
+              <button class="key science" data-function="recip" type="button">1/x</button>
+              <button class="key science" data-insert="π" type="button">π</button>
+              <button class="key science" data-insert="e" type="button">e</button>
+              <button class="key science" data-action="angle" type="button" id="angleToggle">DEG</button>
+            </div>
+            <p class="science-tip"><span>✿</span> Tip: you can type, too!</p>
+          </section>
+        </div>
+        <div class="card-footer"><span>MADE WITH <b>♥</b> & A LITTLE MATH MAGIC</span><span class="footer-dots">● ● ●</span></div>
+      </section>
+
+      <aside class="side-column">
+        <section class="history-panel" id="historyPanel" aria-label="Calculation history">
+          <div class="panel-heading">
+            <div><p class="panel-kicker">YOUR LITTLE NOTEBOOK</p><h2>Recent magic <span>✧</span></h2></div>
+            <button class="clear-history" id="clearHistory" type="button" aria-label="Clear calculation history" title="Clear history">⌫</button>
+          </div>
+          <div class="history-list" id="historyList">
+            <div class="history-empty"><span>🌸</span><p>Your calculations will<br>appear here.</p></div>
+          </div>
+          <div class="history-bottom"><span>EVERY ANSWER HAS A STORY</span><span>♡</span></div>
+        </section>
+
+        <section class="photo-note">
+          <span class="note-flower" aria-hidden="true">✿</span>
+          <span class="note-kicker">A LITTLE NOTE</span>
+          <p>Take a breath.<br><strong>You've got this.</strong></p>
+          <span class="note-signoff">— your tiny math buddy ♡</span>
+          <span class="note-orbit orbit-one" aria-hidden="true"></span><span class="note-orbit orbit-two" aria-hidden="true"></span>
+        </section>
+      </aside>
+    </div>
+    <footer class="page-footer"><span>✿</span> A DREAMY LITTLE SPACE FOR CURIOUS MINDS <span>✿</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
